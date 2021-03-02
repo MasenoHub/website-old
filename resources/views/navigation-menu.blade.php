@@ -17,11 +17,15 @@
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
-                        {{ __('Events') }}
+                        {{ __('Event Calendar') }}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
-                        {{ __('Projects') }}
+                        {{ __('Project Board') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('questions') }}" :active="request()->routeIs('questions')">
+                        {{ __('Q&A') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -152,11 +156,15 @@
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
-                {{ __('Events') }}
+                {{ __('Event Calendar') }}
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
-                {{ __('Projects') }}
+                {{ __('Project Board') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('questions') }}" :active="request()->routeIs('questions')">
+                {{ __('Q&A') }}
             </x-jet-responsive-nav-link>
         </div>
 

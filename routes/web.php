@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/events', [EventController::class, 'show'])->name('events');
 
 Route::get('/projects', [ProjectController::class, 'show'])->name('projects');
+
+Route::get('/questions', [QuestionController::class, 'show'])->name('questions');
