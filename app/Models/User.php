@@ -58,4 +58,44 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get the events for the user.
+     */
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'organizer_id');
+    }
+
+    /**
+     * Get the projects for the user.
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'lead_id');
+    }
+
+    /**
+     * Get the questions for the user.
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'author_id');
+    }
+
+    /**
+     * Get the answers for the user.
+     */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'author_id');
+    }
+
+    /**
+     * Get the posts for the user.
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
 }
