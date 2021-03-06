@@ -24,7 +24,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/events', [EventController::class, 'show'])->name('events');
+Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show')->whereNumber('event');
 
 Route::get('/projects', [ProjectController::class, 'show'])->name('projects');
 

@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
+                    <x-jet-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
                         {{ __('Event Calendar') }}
                     </x-jet-nav-link>
 
@@ -155,7 +155,7 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
+            <x-jet-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
                 {{ __('Event Calendar') }}
             </x-jet-responsive-nav-link>
 
