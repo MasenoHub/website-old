@@ -28,6 +28,8 @@ Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show')->whereNumber('event');
 
-Route::get('/projects', [ProjectController::class, 'show'])->name('projects');
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show')->whereNumber('project');
 
 Route::get('/questions', [QuestionController::class, 'show'])->name('questions');

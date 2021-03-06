@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mx-auto">
                 @foreach ($projects as $project)
-                <a href="#">
+                <a href="{{ route('projects.show', ['project' => $project->id]) }}">
                     <div class="col-span-1 bg-white rounded-lg shadow hover:shadow-lg">
                         <img src="https://picsum.photos/id/{{ $project->id }}/300/200" alt="{{ $project->title }}" class="rounded-t-lg">
                         <div class="p-4">
