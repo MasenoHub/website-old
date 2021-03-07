@@ -1,8 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Q&A') }}
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Q&A') }}
+            </h2>
+            @auth
+            <button class="text-sm px-4 py-2 rounded-lg hover:shadow -my-4"><i class="fas fa-plus mr-2"></i> Ask
+                Question</button>
+            @endauth
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -14,11 +20,13 @@
                         <div class="text-bold">{{ $question->answers->count() }}</div> Answers
                     </div>
                     <div class="ml-4">
-                        <a href="#" class="text-lg">{{ $question->title }}</a>
+                        <a href="{{ route('questions.show', ['question' => $question->id]) }}"
+                            class="text-lg">{{ $question->title }}</a>
                     </div>
                 </div>
                 <div class="w-full flex text-right">
-                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by <span class="text-gray-900">{{ $question->author->name }}</span></p>
+                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by <span
+                            class="text-gray-900">{{ $question->author->name }}</span></p>
                 </div>
             </div>
             @endforeach

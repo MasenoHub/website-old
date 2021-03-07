@@ -16,13 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => view('welcome'));
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 
@@ -32,4 +28,6 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show')->whereNumber('project');
 
-Route::get('/questions', [QuestionController::class, 'show'])->name('questions');
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+
+Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show')->whereNumber('project');
