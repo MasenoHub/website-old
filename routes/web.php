@@ -3,6 +3,10 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\QuestionController;
+use App\Models\Event;
+use App\Models\Post;
+use App\Models\Project;
+use App\Models\Question;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +20,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => view('welcome'));
+Route::get('/', fn () => view('home', [
+    'event' => Event::with(['organizer'])->where('start', '>', now())->latest()->first(),
+    'stats' => [
+        'events'    => Event::count(),
+        'projects'  => Project::count(),
+        'questions' => Question::count(),
+        'posts'     => Post::count()
+    ]
+]))->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 
@@ -31,3 +43,5 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 
 Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show')->whereNumber('project');
+
+Route::get('/about', fn () => view('about'))->name('about');

@@ -40,6 +40,9 @@
             </main>
         </div>
 
+        
+        <footer class="p-6 text-center text-gray-500 font-light">&copy{{ date('Y') }} Maseno Hub</footer>
+
         @stack('modals')
 
         @livewireScripts
