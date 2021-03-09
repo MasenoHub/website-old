@@ -22,7 +22,8 @@
                     </div>
                 </div>
 
-                <button class="mx-auto animate-bounce justify-self-end" onclick="document.getElementById('activities').scrollIntoView({behavior: 'smooth'});">
+                <button class="mx-auto animate-bounce justify-self-end"
+                    onclick="document.getElementById('activities').scrollIntoView({behavior: 'smooth'});">
                     <i class="fas fa-arrow-down"></i>
                 </button>
             </div>
@@ -237,54 +238,58 @@
                 </div>
             </div>
 
-            <div id="contact" class="shadow-t">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="lg:text-center">
-                        <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Contact Us</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            Get in Touch
-                        </p>
-                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                            Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate
-                            veritatis in accusamus quisquam.
-                        </p>
+            <div id="contact" class="pt-12 shadow-t">
+                <div class="max-w-7xl mx-auto">
+                    <div class=" px-4 sm:px-6 lg:px-8">
+                        <div class="lg:text-center">
+                            <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Contact Us</h2>
+                            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                                Get in Touch
+                            </p>
+                            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                                Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum
+                                cupiditate
+                                veritatis in accusamus quisquam.
+                            </p>
+                        </div>
                     </div>
 
-                <form action="#" method="POST">
-                    @csrf
-                    
-                    <div class="overflow-hidden">
-                        <div class="px-4 sm:px-6 lg:py-16 lg:px-8">
-                            <div class="grid grid-cols-6 gap-6 py-6">
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                                    <input type="text" name="name" id="name" autocomplete="name"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
+                    <form action="#" method="POST">
+                        @csrf
 
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="email" class="block text-sm font-medium text-gray-700">Email
-                                        Address</label>
-                                    <input type="email" name="email" id="email" autocomplete="email"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </div>
+                        <div class="overflow-hidden">
+                            <div class="px-4 sm:px-6 lg:py-16 lg:px-8">
+                                <div class="grid grid-cols-6 gap-6 py-6">
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                        <input type="text" name="name" id="name" autocomplete="name"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
 
-                                <div class="col-span-6">
-                                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                    <textarea name="message" id="message"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email
+                                            Address</label>
+                                        <input type="email" name="email" id="email" autocomplete="email"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+
+                                    <div class="col-span-6">
+                                        <label for="message"
+                                            class="block text-sm font-medium text-gray-700">Message</label>
+                                        <textarea name="message" id="message"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="bg-gray-50 text-right py-4 px-4 sm:px-6 lg:px-8">
+                                <button type="submit"
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    Send
+                                </button>
+                            </div>
                         </div>
-                        <div class="bg-gray-50 text-right py-4 px-4 sm:px-6 lg:px-8">
-                            <button type="submit"
-                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Send
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 </x-app-layout>
