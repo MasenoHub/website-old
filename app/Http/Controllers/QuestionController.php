@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -12,6 +13,27 @@ class QuestionController extends Controller
         return view('questions.index', [
             'questions' => Question::with(['author', 'answers'])->get()
         ]);
+    }
+
+    public function new()
+    {
+        return view('questions.new');
+    }
+
+    public function create(Request $request)
+    {
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body'  => ['required', 'string',]
+        ]);
+
+        $question = new Question();
+        $question->title = $data['title'];
+        $question->body = $data['body'];
+        $question->author()->associate(Auth::user());
+
+        $question->save();
+        return redirect()->route('questions.show', ['question' => $question->id]);
     }
 
     public function show($question)

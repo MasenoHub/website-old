@@ -238,8 +238,7 @@
             </div>
 
             <div id="contact" class="shadow-t">
-                <div
-                    class="max-w-7xl mx-auto pt-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="lg:text-center">
                         <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Contact Us</h2>
                         <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -250,9 +249,10 @@
                             veritatis in accusamus quisquam.
                         </p>
                     </div>
-                </div>
 
                 <form action="#" method="POST">
+                    @csrf
+                    
                     <div class="overflow-hidden">
                         <div class="px-4 sm:px-6 lg:py-16 lg:px-8">
                             <div class="grid grid-cols-6 gap-6 py-6">

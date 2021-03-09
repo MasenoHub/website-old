@@ -42,6 +42,10 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/questions/new', [QuestionController::class, 'new'])->name('questions.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->post('/questions/new', [QuestionController::class, 'create']);
+
 Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show')->whereNumber('project');
 
 Route::get('/about', fn () => view('about'))->name('about');

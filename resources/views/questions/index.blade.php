@@ -5,8 +5,9 @@
                 {{ __('Q&A') }}
             </h2>
             @auth
-            <button class="text-sm px-4 py-2 rounded-lg hover:shadow -my-4"><i class="fas fa-plus mr-2"></i> Ask
-                Question</button>
+            <a href="{{ route('questions.new') }}" class="text-sm px-4 py-2 rounded-lg hover:shadow -my-4">
+                <i class="fas fa-plus mr-2"></i> Ask a Question
+            </a>
             @endauth
         </div>
     </x-slot>
