@@ -30,6 +30,10 @@
                         {{ __('Q&A') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')">
+                        {{ __('Blog') }}
+                    </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('About') }}
                     </x-jet-nav-link>
@@ -142,6 +146,10 @@
             <x-jet-responsive-nav-link href="{{ route('questions.index') }}"
                 :active="request()->routeIs('questions.*')">
                 {{ __('Q&A') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')">
+                {{ __('Blog') }}
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">

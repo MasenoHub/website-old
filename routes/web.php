@@ -1,12 +1,17 @@
 <?php
 
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\QuestionController;
-use App\Models\Event;
-use App\Models\Post;
-use App\Models\Project;
-use App\Models\Question;
+use App\Http\Controllers\{
+    EventController,
+    PostController,
+    ProjectController,
+    QuestionController
+};
+use App\Models\{
+    Event,
+    Post,
+    Project,
+    Question
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,5 +52,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/questions/new', [Question
 Route::middleware(['auth:sanctum', 'verified'])->post('/questions/new', [QuestionController::class, 'create']);
 
 Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show')->whereNumber('project');
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')->whereNumber('post');
 
 Route::get('/about', fn () => view('about'))->name('about');

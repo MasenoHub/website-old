@@ -59,7 +59,7 @@
                                         We guarantee that no matter your interests, you will find something for you.
                                         View all upcoming events and never miss an event again.
                                     </dd>
-                                    <a href="{{ route('events.index') }}">
+                                    <a href="{{ route('events.index') }}" class="hover:underline">
                                         <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                             <div>Discover events</div>
                                             <i class="fas fa-arrow-right ml-1 text-indigo-500"></i>
@@ -84,7 +84,7 @@
                                         projects being undertaken by various members of the community, or initiate a
                                         project of your own.
                                     </dd>
-                                    <a href="{{ route('projects.index') }}">
+                                    <a href="{{ route('projects.index') }}" class="hover:underline">
                                         <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                             <div>Explore projects</div>
                                             <i class="fas fa-arrow-right ml-1 text-indigo-500"></i>
@@ -109,7 +109,7 @@
                                         experts in various fields who won't hesitate to help you with whatever trouble
                                         you may be experiencing.
                                     </dd>
-                                    <a href="{{ route('questions.index') }}">
+                                    <a href="{{ route('questions.index') }}" class="hover:underline">
                                         <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                             <div>Contribute in Q&A</div>
                                             <i class="fas fa-arrow-right ml-1 text-indigo-500"></i>
@@ -127,14 +127,14 @@
                                 </div>
                                 <div class="ml-4">
                                     <dt class="text-lg leading-6 font-medium text-gray-900">
-                                        <a href="#">Blog</a>
+                                        <a href="{{ route('posts.index') }}">Blog</a>
                                     </dt>
                                     <dd class="mt-2 text-base text-gray-500">
                                         The Maseno Hub Blog is home to regularly-updated, high-quality, curated content
                                         that is guaranteed to enable you to develop new skills and proficiences and/or
                                         hone your current skillset.
                                     </dd>
-                                    <a href="#">
+                                    <a href="{{ route('posts.index') }}" class="hover:underline">
                                         <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                                             <div>Read the blog</div>
                                             <i class="fas fa-arrow-right ml-1 text-indigo-500"></i>

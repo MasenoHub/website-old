@@ -40,6 +40,6 @@
                 });
             @endforeach
     </script>
-    <script src="{{ mix('js/events.js') }}" defer></script>
+    <script src="{{ mix('js/events/index.js') }}" defer></script>
     @endpush
 </x-app-layout>
