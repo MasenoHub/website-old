@@ -24,7 +24,7 @@ class QuestionController extends Controller
     {
         $data = $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'body'  => ['required', 'string',]
+            'body'  => ['required', 'json',]
         ]);
 
         $question = new Question();

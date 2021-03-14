@@ -2,6 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/js/events/index.js": "/js/events/index.js",
     "/js/posts/index.js": "/js/posts/index.js",
+    "/js/questions/new.js": "/js/questions/new.js",
+    "/js/questions/show.js": "/js/questions/show.js",
     "/css/app.css": "/css/app.css",
     "/css/fontawesome.css": "/css/fontawesome.css",
     "/webfonts/fa-brands-400.eot": "/webfonts/fa-brands-400.eot",

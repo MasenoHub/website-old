@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home', [
+Route::get('/', fn () => view('home', [
     'event' => Event::with(['organizer'])->where('start', '>', now())->latest()->first(),
     'stats' => [
         'events'    => Event::count(),
@@ -33,7 +33,7 @@ Route::view('/', 'home', [
         'questions' => Question::count(),
         'posts'     => Post::count()
     ]
-])->name('home');
+]))->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', fn () => view('dashboard'))->name('dashboard');
 

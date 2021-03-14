@@ -1,3 +1,14 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@import 'quill/dist/quill.core.css';
+@import 'quill/dist/quill.snow.css';
+
+div.ql-toolbar.ql-snow {
+    @apply rounded-t-md
+}
+
+div.ql-container.ql-snow {
+    @apply rounded-b-md
+}

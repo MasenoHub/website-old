@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->text('title');
             $table->text('slug');
-            $table->text('body');
+            $table->longText('body');
             $table->foreignId('author_id')->constrained('users');
             $table->timestamps();
         });

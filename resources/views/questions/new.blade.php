@@ -19,7 +19,7 @@
                 </ul>
             </div>
             @endif
-            <form method="POST">
+            <form id="question" method="POST">
                 @csrf
 
                 <div class="overflow-hidden">
@@ -28,15 +28,13 @@
                             <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                             <input type="text" name="title" id="title" autocomplete="title"
                                 placeholder="Be specific and direct." required
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                         </div>
 
                         <div class="mb-4">
-                            <label for="body" class="block text-sm font-medium text-gray-700">Body</label>
-                            <textarea name="body" id="body"
-                                placeholder="Give additional information that would enable respondents to understand your question."
-                                rows="7" required
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                            <label for="body" class="block text-sm font-medium text-gray-700 mb-1">Body</label>
+                            <input name="body" type="hidden">
+                            <div id="body"></div>
                         </div>
 
                         <div class="mb-4 px-2 py-4">
@@ -57,4 +55,8 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+    <script src="{{ mix("js/questions/new.js") }}" defer></script>
+    @endpush
 </x-app-layout>

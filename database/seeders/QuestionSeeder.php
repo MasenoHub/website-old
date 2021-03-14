@@ -17,11 +17,13 @@ class QuestionSeeder extends Seeder
         $questions = [];
         $now = now();
 
+        $body = file_get_contents(__DIR__ . '/data/question.json');
+
         for ($i = 0; $i < 10; $i++) {
             $questions[] = [
                 'title'         => "Question $i",
                 'slug'          => "question-$i",
-                'body'          => "Question $i on Maseno Hub forum.",
+                'body'          => $body,
                 'author_id'     => 1,
                 'created_at'    => $now,
                 'updated_at'    => $now
