@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/home.js": "/js/home.js",
     "/js/events/index.js": "/js/events/index.js",
     "/js/posts/index.js": "/js/posts/index.js",
     "/js/questions/new.js": "/js/questions/new.js",

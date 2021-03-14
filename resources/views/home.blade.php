@@ -195,19 +195,19 @@
 
                     <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                         <div class="col-span-1 text-center py-4">
-                            <p class="text-6xl mb-2">{{ $stats['events'] }}</p>
+                            <p id="event-counter" class="text-6xl mb-2">0</p>
                             <p class="text-gray-500">Events held</p>
                         </div>
                         <div class="col-span-1 text-center py-4">
-                            <p class="text-6xl mb-2">{{ $stats['projects'] }}</p>
+                            <p id="project-counter" class="text-6xl mb-2">0</p>
                             <p class="text-gray-500">Projects commenced</p>
                         </div>
                         <div class="col-span-1 text-center py-4">
-                            <p class="text-6xl mb-2">{{ $stats['questions'] }}</p>
+                            <p id="question-counter" class="text-6xl mb-2">0</p>
                             <p class="text-gray-500">Questions asked</p>
                         </div>
                         <div class="col-span-1 text-center py-4">
-                            <p class="text-6xl mb-2">{{ $stats['posts'] }}</p>
+                            <p id="post-counter" class="text-6xl mb-2">0</p>
                             <p class="text-gray-500">Posts written</p>
                         </div>
                     </div>
@@ -292,4 +292,16 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    @push('scripts')
+    <script>
+        const events = @json($stats['events']);
+        const projects = @json($stats['projects']);
+        const questions = @json($stats['questions']);
+        const posts = @json($stats['posts']);
+    </script>
+    <script src="{{ mix("js/home.js") }}" defer></script>
+    @endpush
 </x-app-layout>
