@@ -17,13 +17,14 @@ class PostSeeder extends Seeder
         $posts = [];
         $now = now();
 
-        $body = str_repeat(str_repeat("The quick brown fox jumped over the lazy dog.", 7) . "\n", 7);
+        $body = file_get_contents(__DIR__ . '/data/post.json');
+        $summary = 'This is meaningless text meant to simulate an actual post summary and demonstrate the appearance of the blog layout.';
 
         for ($i = 0; $i < 10; $i++) {
             $posts[] = [
                 'title'         => "Post $i",
                 'slug'          => "post-$i",
-                'summary'       => "Post $i on Maseno Hub blog.",
+                'summary'       => "This Post $i on Maseno Hub blog. $summary",
                 'body'          => $body,
                 'author_id'     => 1,
                 'created_at'    => $now,

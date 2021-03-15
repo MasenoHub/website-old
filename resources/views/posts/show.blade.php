@@ -7,12 +7,12 @@
     </x-slot>
 
     <div class="container w-full md:max-w-3xl mx-auto pt-20">
-        <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
-            <div class="font-sans">
+        <div class="w-full text-xl text-gray-800 leading-normal">
+            <div class="font-sans px-4">
                 <a href="{{ route('posts.index') }}"
-                    class="text-base md:text-sm text-indigo-500 font-bold no-underline hover:underline">
+                    class="text-base md:text-sm text-indigo-500 font-bold hover:underline uppercase">
                     <i class="fas fa-arrow-left mr-2"></i>
-                    BACK TO BLOG
+                    Back to Blog
                 </a>
                 <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">
                     {{ $post->title }}
@@ -22,7 +22,8 @@
                 </p>
             </div>
 
-            <div class="py-8">{{ $post->body }}</div>
+            
+            <div id="body" class="py-8 prose lg:prose-xl prose-indigo max-w-none"></div>
         </div>
 
         <!--Tags -->
@@ -45,8 +46,9 @@
             </div>
             <div class="justify-end">
                 <a href="#"
-                    class="bg-transparent border border-gray-500 hover:border-indigo-500 text-xs text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">My
-                    Posts</a>
+                    class="bg-transparent border border-gray-500 hover:border-indigo-500 text-xs text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">
+                    My Posts
+                </a>
             </div>
         </div>
 
@@ -82,4 +84,11 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        const body = @json($post->body);
+    </script>
+    <script src="{{ mix("js/posts/show.js") }}" defer></script>
+    @endpush
 </x-app-layout>
