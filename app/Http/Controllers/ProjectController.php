@@ -21,6 +21,8 @@ class ProjectController extends Controller
         $project = Project::with(['lead'])->find($project);
 
         try {
+            // TODO: Implement OpenGraph stuff in frontend
+            // @phpstan-ignore-next-line
             $project->open_graph = OpenGraph::fetch($project->url);
         } catch (FetchException) {
         }

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Artisan;
 
 // phpcs:disable PHPCompatibility.FunctionDeclarations.NewClosure.ThisFoundOutsideClass
 Artisan::command('inspire', function () {
+    // @phpstan-ignore-next-line
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 // phpcs:enable
