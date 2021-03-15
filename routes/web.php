@@ -35,26 +35,40 @@ Route::get('/', fn () => view('home', [
     ]
 ]))->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', fn () => view('dashboard'))
+    ->name('dashboard');
 
-Route::get('/events', [EventController::class, 'index'])->name('events.index');
+Route::get('/events', [EventController::class, 'index'])
+    ->name('events.index');
 
-Route::get('/events/{event}', [EventController::class, 'show'])->name('events.show')->whereNumber('event');
+Route::get('/events/{event}', [EventController::class, 'show'])
+    ->name('events.show')
+    ->whereNumber('event');
 
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
-Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show')->whereNumber('project');
+Route::get('/projects/{project}', [ProjectController::class, 'show'])
+    ->name('projects.show')
+    ->whereNumber('project');
 
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/questions/new', [QuestionController::class, 'new'])->name('questions.new');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/questions/new', [QuestionController::class, 'new'])
+    ->name('questions.new');
 
-Route::middleware(['auth:sanctum', 'verified'])->post('/questions/new', [QuestionController::class, 'create']);
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/questions/new', [QuestionController::class, 'create']);
 
-Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('questions.show')->whereNumber('project');
+Route::get('/questions/{question}', [QuestionController::class, 'show'])
+    ->name('questions.show')
+    ->whereNumber('project');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')->whereNumber('post');
+Route::get('/posts/{post}', [PostController::class, 'show'])
+    ->name('posts.show')
+    ->whereNumber('post');
 
 Route::get('/about', fn () => view('about'))->name('about');

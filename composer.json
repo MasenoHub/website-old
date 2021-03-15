@@ -21,12 +21,16 @@
         "spatie/laravel-sluggable": "^2.6"
     },
     "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "nunomaduro/larastan": "^0.7.0",
+        "phpcompatibility/php-compatibility": "*",
+        "phpunit/phpunit": "^9.3.3",
+        "squizlabs/php_codesniffer": "*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -62,6 +66,10 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "code:analyse": "phpstan analyse",
+        "code:analyze": "@code:analyse",
+        "code:fix": "phpcbf -p .",
+        "code:sniff": "phpcs -p ."
     }
 }
