@@ -4,6 +4,9 @@
 
     <arg name="colors"/>
 
+    <config name="installed_paths" value="vendor/phpcompatibility/php-compatibility" />
+    <config name="testVersion" value="8.0-"/>
+
     <exclude-pattern>bootstrap/cache/*</exclude-pattern>
     <exclude-pattern>database/migrations/*</exclude-pattern>
     <exclude-pattern>node_modules/*</exclude-pattern>
@@ -15,5 +18,8 @@
 
     <!-- Run against PHP-FIG PSR-12 standard -->
     <rule ref="PSR12"/>
+
+    <!-- Run against the PHPCompatibility ruleset -->
+    <rule ref="PHPCompatibility"/>
 
 </ruleset>
