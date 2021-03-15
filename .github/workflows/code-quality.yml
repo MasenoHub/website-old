@@ -1,4 +1,4 @@
-name: Laravel
+name: Check Code Quality
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  ci:
+  code-quality:
 
     runs-on: ubuntu-latest
 
