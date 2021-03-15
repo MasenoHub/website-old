@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
         $now = now();
 
         $body = file_get_contents(__DIR__ . '/data/post.json');
-        $summary = 'This is meaningless text meant to simulate an actual post summary and demonstrate the appearance of the blog layout.';
+        $summary = 'This is meaningless text meant to demonstrate an actual post summary for the blog layout.';
 
         for ($i = 0; $i < 10; $i++) {
             $posts[] = [

@@ -27,7 +27,7 @@ class Question extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')

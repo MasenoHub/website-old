@@ -18,7 +18,7 @@ class AnswerSeeder extends Seeder
         $now = now();
 
         for ($i = 0; $i < 100; $i++) {
-            $question = floor($i/10);
+            $question = floor($i / 10);
             $questionAnswer = $i - ($question * 10);
 
             $answers[] = [
