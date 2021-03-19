@@ -1,4 +1,9 @@
 <x-app-layout>
+    @section('title', $post->title)
+    @section('url', route('posts.show', ['post' => $post->id]))
+    @section('description', $post->summary)
+    @section('author', $post->author->name)
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Maseno Hub Blog') }}

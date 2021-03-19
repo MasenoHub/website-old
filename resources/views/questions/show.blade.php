@@ -1,4 +1,9 @@
 <x-app-layout>
+    @section('title', $question->title)
+    @section('url', route('questions.show', ['question' => $question->id]))
+    @section('description', $question->summary)
+    @section('author', $question->author->name)
+
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">

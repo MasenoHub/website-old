@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('title', 'Home')
+    @section('url', route('home'))
+    @section('description', 'Maseno Hub homepage.')
+    
     <div class="max-w-7xl">
         <div class="bg-white">
             <div id="hero" class="p-6 sm:px-20 bg-white flex flex-col justify-between"

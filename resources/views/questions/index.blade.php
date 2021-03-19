@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('title', 'Q&A')
+    @section('url', route('questions.index'))
+    @section('description', 'Maseno Hub Q&A.')
+
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
