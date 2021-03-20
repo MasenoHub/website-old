@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('title', 'Verify Email')
+    @section('description', 'Before you get started, please verify your email on Maseno Hub.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

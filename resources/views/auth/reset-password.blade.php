@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('title', 'Password Reset')
+    @section('description', 'Pick a new password for your Maseno Hub account.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

@@ -1,4 +1,8 @@
 <x-guest-layout>
+    @section('title', 'Forgot Password')
+    @section('url', route('password.request'))
+    @section('description', 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

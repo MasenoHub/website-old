@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('title', 'Confirm Password')
+    @section('description', 'This is a secure area of the application. Please confirm your password before continuing.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

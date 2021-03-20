@@ -1,4 +1,9 @@
 <x-app-layout>
+    @section('title', $project->title)
+    @section('url', route('projects.show', ['project' => $project->id]))
+    @section('description', $project->description)
+    @section('author', $project->lead->name)
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __($project->title) }}

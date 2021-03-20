@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('title', 'About')
+    @section('url', route('about'))
+    @section('description', 'About Maseno Hub.')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('About Maseno Hub') }}

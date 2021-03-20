@@ -1,4 +1,27 @@
 <x-app-layout>
+    @section('title', $post->title)
+    @section('url', route('posts.show', ['post' => $post->id]))
+    @section('description', $post->summary)
+    @section('author', $post->author->name)
+    @section('og:type', 'article')
+
+    @section('meta:og')
+    @parent
+    {{-- TODO published_at --}}
+    <meta property="article:published_time" content="{{ $post->created_at->toIso8601String() }}">
+    <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
+    <meta property="article:expiration_time" content="{{ $post->deleted_at?->toIso8601String() }}">
+
+    {{-- TODO Profiles --}}
+    {{-- <meta property="article:author" content=""> --}}
+
+    {{-- TODO Categories, Tags --}}
+    {{-- <meta property="article:section" content="{{ $post->category }}">
+    @foreach ($article->tags as $tag)
+    <meta property="article:tag" content="{{ $tag->name }}">
+    @endforeach --}}
+    @endsection
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Maseno Hub Blog') }}
@@ -22,8 +45,11 @@
                 </p>
             </div>
 
-            
-            <div id="body" class="py-8 prose lg:prose-xl prose-indigo max-w-none"></div>
+            <div id="body" class="py-8 prose prose-indigo max-w-none">
+                <div class="text-center">
+                    <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+                </div>
+            </div>
         </div>
 
         <!--Tags -->

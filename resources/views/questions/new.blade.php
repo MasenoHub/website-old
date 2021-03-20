@@ -1,4 +1,8 @@
 <x-app-layout>
+    @section('title', 'New Question')
+    @section('url', route('questions.new'))
+    @section('description', 'Ask a new question on Maseno Hub Q&A.')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Ask a Question') }}

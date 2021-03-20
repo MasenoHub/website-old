@@ -1,4 +1,8 @@
 <x-guest-layout>
+    @section('title', 'Terms and Conditions')
+    @section('url', route('terms.show'))
+    @section('description', 'Maseno Hub terms and conditions.')
+
     <div class="pt-4 bg-gray-100">
         <div class="min-h-screen flex flex-col items-center pt-6 sm:pt-0">
             <div>
