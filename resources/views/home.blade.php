@@ -9,8 +9,7 @@
                 style="height: calc(100vh - 4rem);">
                 <div>
                     <div>
-                        <p class="text-3xl font-semibold flex items-center">
-                            <x-jet-application-mark class="h-12 w-auto mr-4" /> Maseno Hub</p>
+                        <x-jet-application-logo class="block h-12 w-auto" />
                     </div>
                     <div class="mt-8 text-2xl">
                         Welcome to Maseno Hub!
