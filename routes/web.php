@@ -39,36 +39,44 @@ Route::middleware(['auth:sanctum', 'verified'])
     ->get('/dashboard', fn () => view('dashboard'))
     ->name('dashboard');
 
-Route::get('/events', [EventController::class, 'index'])
-    ->name('events.index');
+Route::prefix('events')->name('events.')->group(function () {
+    Route::get('', [EventController::class, 'index'])
+        ->name('index');
 
-Route::get('/events/{event}', [EventController::class, 'show'])
-    ->name('events.show')
-    ->whereNumber('event');
+    Route::get('/{event}', [EventController::class, 'show'])
+        ->name('show')
+        ->whereNumber('event');
+});
 
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::prefix('projects')->name('projects.')->group(function () {
+    Route::get('', [ProjectController::class, 'index'])->name('index');
 
-Route::get('/projects/{project}', [ProjectController::class, 'show'])
-    ->name('projects.show')
-    ->whereNumber('project');
+    Route::get('/{project}', [ProjectController::class, 'show'])
+        ->name('show')
+        ->whereNumber('project');
+});
 
-Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::prefix('questions')->name('questions.')->group(function () {
+    Route::get('', [QuestionController::class, 'index'])->name('index');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/questions/new', [QuestionController::class, 'new'])
-    ->name('questions.new');
+    Route::middleware(['auth:sanctum', 'verified'])
+        ->get('/new', [QuestionController::class, 'new'])
+        ->name('new');
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->post('/questions/new', [QuestionController::class, 'create']);
+    Route::middleware(['auth:sanctum', 'verified'])
+        ->post('/new', [QuestionController::class, 'create']);
 
-Route::get('/questions/{question}', [QuestionController::class, 'show'])
-    ->name('questions.show')
-    ->whereNumber('project');
+    Route::get('/{question}', [QuestionController::class, 'show'])
+        ->name('show')
+        ->whereNumber('project');
+});
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::prefix('posts')->name('posts.')->group(function () {
+    Route::get('', [PostController::class, 'index'])->name('index');
 
-Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show')
-    ->whereNumber('post');
+    Route::get('/{post}', [PostController::class, 'show'])
+        ->name('show')
+        ->whereNumber('post');
+});
 
 Route::get('/about', fn () => view('about'))->name('about');
