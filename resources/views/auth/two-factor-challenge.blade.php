@@ -1,4 +1,7 @@
 <x-guest-layout>
+    @section('title', 'Two Factor Authentication')
+    @section('description', 'Please confirm access to your account.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

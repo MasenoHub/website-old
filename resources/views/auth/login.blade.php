@@ -1,4 +1,8 @@
 <x-guest-layout>
+    @section('title', 'Login')
+    @section('url', route('login'))
+    @section('description', 'Welcome back! Log in to Maseno Hub.')
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
