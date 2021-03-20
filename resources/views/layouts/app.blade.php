@@ -8,33 +8,32 @@
 
     <title>@yield('title') | {{ config('app.name', 'Maseno Hub') }}</title>
 
-    <meta name="description" content="@yield('description')" />
+    <meta name="description" content="@yield('description', 'Maseno Hub')" />
     <meta name="keywords" content="maseno hub">
     <meta name="author" content="@yield('author', 'Maseno Hub')">
     <meta name="designer" content="Maseno Hub">
     <meta name="publisher" content="Maseno Hub">
-    @stack('meta-tags')
 
+    @section('meta:og')
     <!-- Facebook Meta Tags -->
     <meta property="og:site_name" content="{{ config('app.name', 'Maseno Hub') }}">
     <meta property="og:url" content="@yield('url', 'https://masenohub.herokuapp.com')" />
-    <meta property="og:type" content="@yield('type', 'website')" />
+    <meta property="og:type" content="@yield('og:type', 'website')" />
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="@yield('description', 'Maseno Hub')" />
     <meta property="og:image" content="https://masenohub.herokuapp.com/logo.png" />
-    @stack('og-tags')
+    @show
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:domain" content="masenohub.herokuapp.com" />
-    <meta name="twitter:url" content="@yield('url')" />
+    <meta name="twitter:url" content="@yield('url', 'https://masenohub.herokuapp.com'))" />
     <meta name="twitter:title" content="{{ config('app.name', 'Maseno Hub') }}" />
-    <meta name="twitter:description" content="@yield('description')" />
+    <meta name="twitter:description" content="@yield('description', 'Maseno Hub')" />
     <meta name="twitter:image" content="https://masenohub.herokuapp.com/logo.png" />
     <meta name="twitter:image_alt" content="{{ config('app.name', 'Maseno Hub') }}" />
     <meta name="twitter:site" content="masenohub" />
-    <meta name="twitter:creator" content="@yield('creator-twitter', 'masenohub')" />
-    @stack('twitter-tags')
+    <meta name="twitter:creator" content="@yield('twitter:creator', 'masenohub')" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -80,7 +79,7 @@
     </div>
 
 
-    <footer class="p-6 text-center text-gray-500 font-light">&copy{{ date('Y') }} Maseno Hub</footer>
+    <footer class="p-6 text-center text-gray-500 font-light">&copy;{{ date('Y') }} Maseno Hub</footer>
 
     @stack('modals')
 

@@ -1,8 +1,27 @@
 <x-app-layout>
     @section('title', $question->title)
     @section('url', route('questions.show', ['question' => $question->id]))
-    @section('description', $question->summary)
+    {{-- TODO Brief summary here --}}
+    {{-- @section('description', $question->summary) --}}
     @section('author', $question->author->name)
+    @section('og:type', 'article')
+
+    @section('meta:og')
+        @parent
+        {{-- TODO published_at --}}
+        <meta property="article:published_time" content="{{ $question->created_at->toIso8601String() }}">
+        <meta property="article:modified_time" content="{{ $question->updated_at->toIso8601String() }}">
+        <meta property="article:expiration_time" content="{{ $question->deleted_at?->toIso8601String() }}">
+
+        {{-- TODO Profiles --}}
+        {{-- <meta property="article:author" content=""> --}}
+        
+        {{-- TODO Categories, Tags --}}
+        {{-- <meta property="article:section" content="{{ $question->category }}">
+        @foreach ($article->tags as $tag)
+            <meta property="article:tag" content="{{ $tag->name }}">
+        @endforeach --}}
+    @endsection
 
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -21,9 +40,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-4">
                 <div class="bg-white rounded-lg shadow p-4">
-                    <div class="prose lg:prose-xl prose-indigo max-w-none my-2">
+                    <div class="prose prose-indigo max-w-none my-2">
                         <h1 class="font-extralight px-4">{{ $question->title }}</h1>
-                        <div id="body" class="py-4"></div>
+                        <div id="body" class="py-4">
+                            <div class="text-center">
+                                <i class="fas fa-circle-notch fa-spin fa-lg"></i>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
