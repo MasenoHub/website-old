@@ -22,7 +22,22 @@
                         <p class="col-span-1"><i class="fas fa-flag-checkered mr-2"></i>
                             {{ $event->end->toDayDateTimeString() }}</p>
                     </div>
-                    
+
+                    <div class="border-b mb-3 grid grid-cols-2 lg:grid-cols-4 pb-3 gap-4">
+                        <a href="{{ $link->google() }}" target="_blank" class="px-4 py-2 shadow hover:shadow-inner rounded-full text-red-500">
+                            <i class="fab fa-google mr-2"></i> Add to Calendar
+                        </a>
+                        <a href="{{ $link->webOutlook() }}" target="_blank" class="px-4 py-2 shadow hover:shadow-inner rounded-full text-blue-500">
+                            <i class="fab fa-microsoft mr-2"></i> Add to Outlook
+                        </a>
+                        <a href="{{ $link->yahoo() }}" target="_blank" class="px-4 py-2 shadow hover:shadow-inner rounded-full text-indigo-700">
+                            <i class="fab fa-yahoo mr-2"></i> Add to Yahoo!
+                        </a>
+                        <a href="{{ $link->ics() }}" target="_blank" class="px-4 py-2 shadow hover:shadow-inner rounded-full">
+                            <i class="fas fa-calendar-alt mr-2"></i> Add to iCalendar
+                        </a>
+                    </div>
+
                     <p>{{ $event->description }}</p>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Spatie\CalendarLinks\Link;
 
 class EventController extends Controller
 {
@@ -14,10 +15,15 @@ class EventController extends Controller
         ]);
     }
 
-    public function show($event)
+    public function show($eventId)
     {
+        $event = Event::with(['organizer'])->find($eventId);
+
         return view('events.show', [
-            'event' => Event::with(['organizer'])->find($event)
+            'event' => $event,
+            'link'  => Link::create($event->title, $event->start, $event->end)
+                ->address($event->venue)
+                ->description($event->description)
         ]);
     }
 }
