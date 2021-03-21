@@ -65,6 +65,12 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
         </div>
+
+        <!-- Role -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="role" value="{{ __('Role') }}" />
+            <x-jet-input id="role" type="text" class="mt-1 block w-full" value="{{ $this->user->role }}" disabled readonly/>
+        </div>
     </x-slot>
 
     <x-slot name="actions">

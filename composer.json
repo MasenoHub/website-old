@@ -71,6 +71,10 @@
         ],
         "code:analyse": "phpstan analyse",
         "code:analyze": "@code:analyse",
+        "code:check": [
+            "@code:sniff",
+            "@code:analyse"
+        ],
         "code:fix": "phpcbf -p .",
         "code:sniff": "phpcs -p ."
     }
