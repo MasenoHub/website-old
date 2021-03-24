@@ -80,3 +80,8 @@ Route::prefix('posts')->name('posts.')->group(function () {
 });
 
 Route::get('/about', fn () => view('about'))->name('about');
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')
+    ->name('admin.')->group(function () {
+        Route::get('', fn () => view('admin.index'))->name('index');
+    });
