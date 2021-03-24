@@ -16,6 +16,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body class="font-sans">
@@ -26,18 +29,19 @@
 
                 {{-- Mobile Bar --}}
                 <div class="bg-blue-900 py-2 px-4 flex items-center justify-between lg:hidden text-blue-100">
-                    <button id="menuToggle">
+                    <button id="menuToggle" class="flex p-2 rounded-lg">
                         <i class="fas fa-bars text-lg"></i>
                     </button>
                     <a href="#" class="block -mr-8">
                         <span class="sr-only">Maseno Hub Admin</span>
                         {{-- TODO Text Color --}}
-                        <x-jet-application-logo  class="w-40"/>
+                        <x-jet-application-logo class="w-40" />
                     </a>
                     <button
                         class="flex flex-row items-center justify-center xl:justify-start space-x-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-60">
                         <span class="font-bold text-blue-100 text-xs">{{ Auth::user()->name }}</span>
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="w-10 h-10 rounded-full">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+                            class="w-10 h-10 rounded-full">
                     </button>
                 </div>
 
@@ -50,76 +54,17 @@
                     <div class="flex-1 py-4">
                         <a href="#" class="hidden md:block">
                             <span class="sr-only">Maseno Hub Admin</span>
-                            <x-jet-application-logo  class="w-40"/>
+                            <x-jet-application-logo class="w-40" />
                         </a>
-                        <nav class="md:mt-8 -mx-2">
-                            <ul class="text-base pt-2 space-y-3">
-                                <li>
-                                    <a href="#"
-                                        class="bg-blue-50 hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold">
-                                        <i class="fas fa-tachometer-alt text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Dashboard
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-white hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold text-opacity-70 hover:text-opacity-100">
-                                        <i class="fas fa-tachometer-alt text-lg text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Inbox
-                                        </span>
-                                        <span
-                                            class="bg-red-500 text-white text-xs w-5 h-5 rounded-full inline-flex items-center justify-center">
-                                            3
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-white hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold text-opacity-70 hover:text-opacity-100">
-                                        <i class="fas fa-tachometer-alt text-lg text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Sales
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-white hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold text-opacity-70 hover:text-opacity-100">
-                                        <i class="fas fa-tachometer-alt text-lg text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Downloads
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-white hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold text-opacity-70 hover:text-opacity-100">
-                                        <i class="fas fa-tachometer-alt text-lg text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Team
-                                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="bg-white hover:bg-blue-50 transition-colors duration-100 text-blue-800 flex items-center py-3 px-4 space-x-2 rounded-lg font-bold text-opacity-70 hover:text-opacity-100">
-                                        <i class="fas fa-tachometer-alt text-lg text-blue-600"></i>
-                                        <span class="flex-1">
-                                            Settings
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                        
+                        <x-admin.navigation-menu />
                     </div>
 
                     {{-- Profile link --}}
                     <button
                         class="hidden md:flex w-full xl:w-auto flex-col xl:flex-row items-center justify-center xl:justify-start space-y-4 xl:space-y-0 xl:space-x-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-60 absolute left-0 xl:left-8  bottom-6">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="w-14 h-14 rounded-full">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+                            class="w-14 h-14 rounded-full">
                         <div class="flex flex-col items-center xl:items-start  text-sm">
                             <span class="font-bold text-blue-900 ">{{ Auth::user()->name }}</span>
                             <span class="font-bold text-sm text-blue-800 opacity-50">View profile</span>
@@ -134,7 +79,7 @@
                     <div class="max-w-screen-2xl w-full mx-auto flex justify-between">
                         <div class="hidden md:block">
                             <h1 class="text-2xl mb-1 font-bold text-blue-800">Welcome {{ Auth::user()->name }}</h1>
-                            <p class="text-lg text-blue-900 hidden lg:block">Dashboard overview</p>
+                            <p class="text-lg text-blue-900 hidden lg:block">@yield('title')</p>
                         </div>
                         <div class="flex space-x-4 flex-1 justify-between md:justify-end">
                             <div class="relative md:max-w-xs w-full">
@@ -166,7 +111,6 @@
             </div>
 
 
-            {{-- JavaScript --}}
             <script>
                 // Toggle mobile menu
                 const button = document.getElementById('menuToggle');

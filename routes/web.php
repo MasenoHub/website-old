@@ -84,4 +84,20 @@ Route::get('/about', fn () => view('about'))->name('about');
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')
     ->name('admin.')->group(function () {
         Route::get('', fn () => view('admin.index'))->name('index');
+
+        Route::prefix('events')->name('events.')->group(function () {
+            Route::get('', fn () => view('admin.events.index'))->name('index');
+        });
+
+        Route::prefix('projects')->name('projects.')->group(function () {
+            Route::get('', fn () => view('admin.projects.index'))->name('index');
+        });
+
+        Route::prefix('questions')->name('questions.')->group(function () {
+            Route::get('', fn () => view('admin.questions.index'))->name('index');
+        });
+
+        Route::prefix('posts')->name('posts.')->group(function () {
+            Route::get('', fn () => view('admin.posts.index'))->name('index');
+        });
     });

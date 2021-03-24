@@ -1,5 +1,6 @@
 <x-admin-layout>
-
+    @section('title', 'Dashboard')
+    
     <!-- cards row -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-8">
 
