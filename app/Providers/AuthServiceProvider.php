@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // This Gate checks whether the user has any business in the admin dashboard
-        Gate::define('admin-access', function (User $user) {
+        Gate::define('administrate', function (User $user) {
             return in_array($user->role, self::ADMINISTRATORS)
                 || $user->events->count() > 0
                 || $user->posts->count() > 0;

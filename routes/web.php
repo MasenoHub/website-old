@@ -81,8 +81,15 @@ Route::prefix('posts')->name('posts.')->group(function () {
 
 Route::get('/about', fn () => view('about'))->name('about');
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')
-    ->name('admin.')->group(function () {
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'password.confirm',
+    'can:administrate'
+])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
         Route::get('', fn () => view('admin.index'))->name('index');
 
         Route::prefix('events')->name('events.')->group(function () {
