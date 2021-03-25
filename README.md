@@ -1,6 +1,6 @@
 <p align="center">
     <a href="#" target="_blank">
-        <img src="public/logo.png" width="400">
+        <img src="public/logo.svg" width="256">
     </a>
 </p>
 
