@@ -6,6 +6,11 @@
             </x-admin.nav-link>
         </li>
         <li>
+            <x-admin.nav-link href="{{ route('admin.users.index') }}" icon="fas fa-users" :active="request()->routeIs('admin.users.*')">
+                Users
+            </x-admin.nav-link>
+        </li>
+        <li>
             <x-admin.nav-link href="{{ route('admin.events.index') }}" icon="far fa-calendar-alt" :active="request()->routeIs('admin.events.*')">
                 Events
             </x-admin.nav-link>

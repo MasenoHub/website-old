@@ -92,6 +92,10 @@ Route::middleware([
     ->group(function () {
         Route::get('', fn () => view('admin.index'))->name('index');
 
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('', fn () => view('admin.users.index'))->name('index');
+        });
+
         Route::prefix('events')->name('events.')->group(function () {
             Route::get('', fn () => view('admin.events.index'))->name('index');
         });

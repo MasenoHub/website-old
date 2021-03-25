@@ -16,6 +16,14 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
+    <style>
+        /* HACK Workaround for datatable search bar */
+        #content>div>div>div.flex-1.flex.flex-col.bg-blue-50.py-4.lg\:py-8.px-4.lg\:px-6.xl\:px-8.overflow-hidden>div.flex-1.py-4.lg\:py-10>div>div>div>div.flex.justify-between.items-center.mb-1>div.flex-grow.h-10.flex.items-center>div>div>input {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+    @livewireStyles
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -56,7 +64,7 @@
                             <span class="sr-only">Maseno Hub Admin</span>
                             <x-jet-application-logo class="w-40" />
                         </a>
-                        
+
                         <x-admin.navigation-menu />
                     </div>
 
@@ -125,6 +133,8 @@
             </script>
         </div>
     </div>
+
+    @livewireScripts
 </body>
 
 </html>
