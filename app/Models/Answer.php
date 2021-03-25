@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property User $author;
+ * @property Question $question;
+ */
 class Answer extends Model
 {
     use HasFactory;

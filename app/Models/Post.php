@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PhpParser\Node\Expr\PostDec;
 
+/**
+ * @property User $author
+ * @property Post $newer
+ * @property Post $older
+ */
 class Post extends Model
 {
     use HasFactory;
