@@ -86,7 +86,7 @@
                     {{-- Top Bar --}}
                     <div class="max-w-screen-2xl w-full mx-auto flex justify-between">
                         <div class="hidden md:block">
-                            <h1 class="text-2xl mb-1 font-bold text-blue-800">Welcome {{ Auth::user()->name }}</h1>
+                            <h1 class="text-2xl mb-1 font-bold text-blue-800">Welcome, {{ Auth::user()->name }}!</h1>
                             <p class="text-lg text-blue-900 hidden lg:block">@yield('title')</p>
                         </div>
                         <div class="flex space-x-4 flex-1 justify-between md:justify-end">

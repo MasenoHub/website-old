@@ -7,10 +7,12 @@ use App\Http\Controllers\{
     QuestionController
 };
 use App\Models\{
+    Answer,
     Event,
     Post,
     Project,
-    Question
+    Question,
+    User
 };
 use Illuminate\Support\Facades\Route;
 
@@ -90,7 +92,14 @@ Route::middleware([
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
-        Route::get('', fn () => view('admin.index'))->name('index');
+        Route::get('', fn () => view('admin.index', [
+            'users'     => User::count(),
+            'events'    => Event::count(),
+            'projects'  => Project::count(),
+            'questions' => Question::count(),
+            'answers'   => Answer::count(),
+            'posts'     => Post::count()
+        ]))->name('index');
 
         Route::prefix('users')->name('users.')->group(function () {
             Route::get('', fn () => view('admin.users.index'))->name('index');
