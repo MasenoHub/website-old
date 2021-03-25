@@ -41,9 +41,7 @@
                             class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
                         <span class="flex-grow flex flex-col pl-4">
                             <span class="title-font font-medium text-gray-900">{{ $post->author->name }}</span>
-                            {{-- <span class="text-gray-400 text-xs tracking-widest mt-0.5 uppercase">{{ $post->author->role }}</span>
-                        --}}
-                        <span class="text-gray-400 text-xs tracking-widest mt-0.5 uppercase">admin</span>
+                            <span class="text-gray-400 text-xs tracking-widest mt-0.5 uppercase">{{ $post->author->role }}</span>
                         </span>
                     </a>
                 </div>

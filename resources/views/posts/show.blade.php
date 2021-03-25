@@ -67,8 +67,7 @@
                 alt="{{ $post->author->name }}">
             <div class="flex-1 px-2">
                 <p class="text-base font-bold md:text-xl leading-none mb-2">{{ $post->author->name }}</p>
-                {{-- <p class="text-gray-600 text-xs md:text-base uppercase">{{ $post->author->role }}</p> --}}
-                <p class="text-gray-600 text-xs md:text-base uppercase">admin</p>
+                <p class="text-gray-600 text-xs md:text-base uppercase">{{ $post->author->role }}</p>
             </div>
             <div class="justify-end">
                 <a href="#"

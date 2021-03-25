@@ -1,4 +1,4 @@
-<svg width="256" height="48" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
+<svg viewBox="0 0 256 48" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
   <defs>
    <linearGradient y2="0" x2="1" y1="1" x1="0" id="svg_4">
     <stop offset="0.41797" stop-color="#f9844c"/>

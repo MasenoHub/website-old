@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
+        "mediconesystems/livewire-datatables": "dev-master",
         "shweshi/opengraph": "^1.1",
         "spatie/calendar-links": "^1.4",
         "spatie/laravel-cookie-consent": "^2.12",
@@ -71,6 +72,10 @@
         ],
         "code:analyse": "phpstan analyse",
         "code:analyze": "@code:analyse",
+        "code:check": [
+            "@code:sniff",
+            "@code:analyse"
+        ],
         "code:fix": "phpcbf -p .",
         "code:sniff": "phpcs -p ."
     }

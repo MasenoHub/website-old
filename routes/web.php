@@ -7,10 +7,12 @@ use App\Http\Controllers\{
     QuestionController
 };
 use App\Models\{
+    Answer,
     Event,
     Post,
     Project,
-    Question
+    Question,
+    User
 };
 use Illuminate\Support\Facades\Route;
 
@@ -80,3 +82,42 @@ Route::prefix('posts')->name('posts.')->group(function () {
 });
 
 Route::get('/about', fn () => view('about'))->name('about');
+
+Route::middleware([
+    'auth:sanctum',
+    'verified',
+    'password.confirm',
+    'can:administrate'
+])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('', fn () => view('admin.index', [
+            'users'     => User::count(),
+            'events'    => Event::count(),
+            'projects'  => Project::count(),
+            'questions' => Question::count(),
+            'answers'   => Answer::count(),
+            'posts'     => Post::count()
+        ]))->name('index');
+
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('', fn () => view('admin.users.index'))->name('index');
+        });
+
+        Route::prefix('events')->name('events.')->group(function () {
+            Route::get('', fn () => view('admin.events.index'))->name('index');
+        });
+
+        Route::prefix('projects')->name('projects.')->group(function () {
+            Route::get('', fn () => view('admin.projects.index'))->name('index');
+        });
+
+        Route::prefix('questions')->name('questions.')->group(function () {
+            Route::get('', fn () => view('admin.questions.index'))->name('index');
+        });
+
+        Route::prefix('posts')->name('posts.')->group(function () {
+            Route::get('', fn () => view('admin.posts.index'))->name('index');
+        });
+    });
