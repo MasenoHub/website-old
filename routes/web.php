@@ -14,6 +14,7 @@ use App\Models\{
     Question,
     User
 };
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,8 +82,17 @@ Route::prefix('posts')->name('posts.')->group(function () {
         ->whereNumber('post');
 });
 
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{id}', fn ($id) => view('users.show', ['user' => User::find($id)]))
+        ->name('show');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/me', fn () => redirect(route('users.show', ['id' => Auth::id()])));
+
 Route::get('/about', fn () => view('about'))->name('about');
 
+// Administrative routes
 Route::middleware([
     'auth:sanctum',
     'verified',
