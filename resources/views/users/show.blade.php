@@ -126,7 +126,7 @@
                     </span>
                     <span class="hidden sm:block count px-3 py-1 rounded-full bg-white"
                         x-bind:class="{ 'bg-blue-400 text-white' : selected === 'posts' }">
-                        {{ user->posts->whereNotNull(['published_at'])->count() }}
+                        {{ $user->posts->whereNotNull(['published_at'])->count() }}
                     </span>
                 </a>
             </div>
