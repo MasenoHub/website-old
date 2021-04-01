@@ -18,6 +18,7 @@ mix.js("resources/js/app.js", "public/js")
     .js("resources/js/posts/show.js", "public/js/posts")
     .js("resources/js/questions/new.js", "public/js/questions")
     .js("resources/js/questions/show.js", "public/js/questions")
+    .js("resources/js/users/show.js", "public/js/users")
     .postCss("resources/css/app.css", "public/css", [
         require("postcss-import"),
         require("tailwindcss"),

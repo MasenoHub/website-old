@@ -36,64 +36,81 @@
             </div>
         </div>
 
-        <div id="details" class="mt-12 bg-gray-100" x-data="{ selected: 1 }">
+        <div id="details" class="mt-12 bg-gray-100"
+            x-data="{ selected: window.location.hash ? window.location.hash.substring(1) : 'questions' }">
             <div class="w-full md:w-1/2 flex justify-between">
-                <a href="#1" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
-                    x-bind:class="{ 'font-semibold bg-white' : selected === 1 }" x-on:click="selected = 1">
+                <a href="#questions" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
+                    x-bind:class="{ 'font-semibold bg-white' : selected === 'questions' }"
+                    x-on:click="selected = 'questions'">
                     <span class="flex flex-col sm:block items-center mx-auto">
                         <i class="far fa-comments mr-2"></i> Questions
                     </span>
                     <span class="hidden sm:block count px-3 py-1 rounded-full bg-white"
-                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 1 }">
-                        {{ $user->questions->count() }}
+                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 'questions' }">
+                        {{ $questions->count() }}
                     </span>
                 </a>
-                <a href="#2" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
-                    x-bind:class="{ 'font-semibold bg-white' : selected === 2 }" x-on:click="selected = 2">
+                <a href="#answers" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
+                    x-bind:class="{ 'font-semibold bg-white' : selected === 'answers' }"
+                    x-on:click="selected = 'answers'">
                     <span class="flex flex-col sm:block items-center mx-auto">
                         <i class="far fa-comment mr-2"></i> Answers
                     </span>
                     <span class="hidden sm:block count px-3 py-1 rounded-full bg-white"
-                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 2 }">
-                        {{ $user->answers->count() }}
+                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 'answers' }">
+                        {{ $answers->count() }}
                     </span>
                 </a>
-                <a href="#3" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
-                    x-bind:class="{ 'font-semibold bg-white' : selected === 3 }" x-on:click="selected = 3">
+                <a href="#posts" class="p-4 flex justify-between hover:bg-white flex-grow items-center"
+                    x-bind:class="{ 'font-semibold bg-white' : selected === 'posts' }" x-on:click="selected = 'posts'">
                     <span class="flex flex-col sm:block items-center mx-auto">
                         <i class="far fa-newspaper mr-2"></i> Posts
                     </span>
                     <span class="hidden sm:block count px-3 py-1 rounded-full bg-white"
-                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 3 }">
-                        {{ $user->posts->count() }}
+                        x-bind:class="{ 'bg-blue-400 text-white' : selected === 'posts' }">
+                        {{ $posts->count() }}
                     </span>
                 </a>
             </div>
-            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptatibus quos modi voluptatem
-                totam sapiente est, voluptas quas facilis reiciendis culpa magni delectus dolorem sint! Minus in
-                perspiciatis officia ducimus.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur facere ad quasi laboriosam
-                ullam quaerat fuga nam voluptatum alias! Unde itaque maiores cumque accusantium dignissimos, animi
-                dolores architecto eaque!
+            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 'questions'">
+                @foreach ($questions as $question)
+                <div class="p-4 my-4 rounded-lg hover:shadow">
+                    <a href="{{ route('questions.show', ['question' => $question->id]) }}"
+                        class="font-semibold hover:text-blue-600 mb-4">
+                        {{ $question->title }}
+                    </a>
+                    <div class="text-sm text-gray-500 text-right">
+                        Asked on <a href="#" class="font-semibold hover:underline">{{ $question->created_at }}</a>
+                    </div>
+                </div>
+                @endforeach
             </div>
-            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptatibus quos modi voluptatem
-                totam sapiente est, voluptas quas facilis reiciendis culpa magni delectus dolorem sint! Minus in
-                perspiciatis officia ducimus.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam ducimus tenetur consequatur quibusdam
-                voluptatibus. Sint corrupti ipsa quae placeat quasi, enim hic, doloremque labore voluptates temporibus
-                tempore culpa consequatur ea?
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt numquam voluptatibus ullam veritatis
-                accusamus quae perspiciatis reprehenderit eius ab, recusandae dolore saepe deleniti blanditiis aliquam
-                et sed modi unde pariatur.
+            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 'answers'">
+                @foreach ($answers as $answer)
+                <div class="p-4 my-4 rounded-lg hover:shadow">
+                    <p class="text-sm mb-4">
+                        <i class="fas fa-arrow-left mr-2"></i> Replying to
+                        <a href="{{ route('questions.show', ['question' => $answer->question->id]) }}"
+                            class="font-semibold hover:underline">{{ $answer->question->title }}</a>
+                    </p>
+                    <p class="mb-4">{{ $answer->text }}</p>
+                    <div class="text-sm text-gray-500 text-right">
+                        Answered on <a href="#" class="font-semibold hover:underline">{{ $question->created_at }}</a>
+                    </div>
+                </div>
+                @endforeach
             </div>
-            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptatibus quos modi voluptatem
-                totam sapiente est, voluptas quas facilis reiciendis culpa magni delectus dolorem sint! Minus in
-                perspiciatis officia ducimus.
+            <div class="bg-white p-4" x-show.transition.in.opacity.duration.750ms="selected === 'posts'">
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                    @foreach ($posts as $post)
+                    <x-posts.post-item :post="$post" />
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 
+    @push('scripts')
+    <script src="{{ mix('js/users/show.js') }}" defer></script>
+    @endpush
 </x-app-layout>

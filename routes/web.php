@@ -83,7 +83,12 @@ Route::prefix('posts')->name('posts.')->group(function () {
 });
 
 Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/{id}', fn ($id) => view('users.show', ['user' => User::find($id)]))
+    Route::get('/{id}', fn ($id) => view('users.show', [
+        'user'      => User::find($id),
+        'questions' => Question::all(),
+        'answers'   => Answer::with(['question'])->get(),
+        'posts'     => Post::orderBy('id', 'desc')->get()
+    ]))
         ->name('show');
 });
 
