@@ -3,6 +3,14 @@
     @section('url', route('users.show', ['id' => $user->id]))
     @section('description', "{$user->name} | User profile on Maseno Hub")
 
+    @section('meta:og')
+    @parent
+    <meta property="profile:first_name" content="{{ $user->name }}">
+    <meta property="profile:last_name" content="{{ $user->name }}">
+    <meta property="profile:username" content="{{ $user->name }}">
+    <meta property="profile:gender" content="">
+    @endsection
+
     @push('styles')
     <style>
         div#details a,

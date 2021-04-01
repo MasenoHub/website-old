@@ -48,7 +48,7 @@
                     <img src="{{ $event->organizer->profile_photo_url }}" alt="{{ $event->organizer->name }}"
                         class="rounded-full">
                     <div>
-                        <p class="text-xl">{{ $event->organizer->name }}</p>
+                        <a href="{{ route('users.show', ['id' => $event->organizer->id]) }}" class="font-semibold text-xl hover:text-indigo-500">{{ $event->organizer->name }}</a>
                         <p class="text-sm text-gray-500">{{ $event->organizer->email }}</p>
                     </div>
                 </div>

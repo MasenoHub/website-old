@@ -30,7 +30,7 @@
     </div>
 
     @if ($author)
-    <a class="inline-flex items-center mt-4">
+    <a href="{{ route('users.show', ['id' => $post->author->id]) }}" class="inline-flex items-center mt-4 p-2 rounded-lg hover:shadow">
         <img alt="{{ $post->author->name }}" src="{{ $post->author->profile_photo_url }}"
             class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
         <span class="flex-grow flex flex-col pl-4">

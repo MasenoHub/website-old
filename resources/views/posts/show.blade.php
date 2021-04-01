@@ -4,16 +4,12 @@
     @section('description', $post->summary)
     @section('author', $post->author->name)
     @section('og:type', 'article')
-
     @section('meta:og')
     @parent
     <meta property="article:published_time" content="{{ $post->published_at->toIso8601String() }}">
     <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
     <meta property="article:expiration_time" content="{{ $post->deleted_at?->toIso8601String() }}">
-
-    {{-- TODO Profiles --}}
-    {{-- <meta property="article:author" content=""> --}}
-
+    <meta property="article:author" content="{{ route('users.show', ['id' => $post->author->id ]) }}">
     <meta property="article:section" content="{{ $post->category }}">
 
     {{-- TODO Tags --}}
@@ -66,7 +62,7 @@
             <img class="w-10 h-10 rounded-full mr-4" src="{{ $post->author->profile_photo_url }}"
                 alt="{{ $post->author->name }}">
             <div class="flex-1 px-2">
-                <p class="text-base font-bold md:text-xl leading-none mb-2">{{ $post->author->name }}</p>
+                <a href="{{ route('users.show', ['id' => $post->author->id]) }}" class="text-base font-bold md:text-xl leading-none mb-2 hover:text-indigo-500">{{ $post->author->name }}</a>
                 <p class="text-gray-600 text-xs md:text-base uppercase">{{ $post->author->role }}</p>
             </div>
             <div class="justify-end">

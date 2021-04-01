@@ -30,8 +30,9 @@
                     </div>
                 </div>
                 <div class="w-full flex text-right">
-                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by <span
-                            class="text-gray-900">{{ $question->author->name }}</span></p>
+                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by
+                        <a href="{{ route('users.show', ['id' => $question->author->id]) }}" class="font-semibold text-gray-900 hover:underline">{{ $question->author->name }}</a>
+                    </p>
                 </div>
             </div>
             @endforeach
