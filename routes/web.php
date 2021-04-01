@@ -14,8 +14,7 @@ use App\Models\{
     Question,
     User
 };
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{Auth, Route};
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +33,7 @@ Route::get('/', fn () => view('home', [
         'events'    => Event::count(),
         'projects'  => Project::count(),
         'questions' => Question::count(),
-        'posts'     => Post::count()
+        'posts'     => Post::whereNotNull(['published_at'])->count()
     ]
 ]))->name('home');
 
@@ -84,16 +83,18 @@ Route::prefix('posts')->name('posts.')->group(function () {
 
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{id}', fn ($id) => view('users.show', [
-        'user'      => User::find($id),
+        'user'      => User::with(['events', 'projects', 'questions', 'answers', 'posts'])
+            ->find($id),
         'questions' => Question::all(),
         'answers'   => Answer::with(['question'])->get(),
-        'posts'     => Post::orderBy('id', 'desc')->get()
+        'posts'     => Post::whereNotNull(['published_at'])->orderBy('id', 'desc')->get()
     ]))
         ->name('show');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/me', fn () => redirect(route('users.show', ['id' => Auth::id()])));
+    ->get('/me', fn () => redirect(route('users.show', ['id' => Auth::id()])))
+    ->name('me');
 
 Route::get('/about', fn () => view('about'))->name('about');
 
@@ -113,7 +114,7 @@ Route::middleware([
             'projects'  => Project::count(),
             'questions' => Question::count(),
             'answers'   => Answer::count(),
-            'posts'     => Post::count()
+            'posts'     => Post::whereNotNull(['published_at'])->count()
         ]))->name('index');
 
         Route::prefix('users')->name('users.')->group(function () {
