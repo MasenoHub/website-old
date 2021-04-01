@@ -17,8 +17,8 @@
                     <div class="col-span-1 bg-white rounded-lg shadow hover:shadow-lg">
                         <img src="https://picsum.photos/id/{{ $project->id }}/300/200" alt="{{ $project->title }}" class="rounded-t-lg">
                         <div class="p-4">
-                            <p class="text-lg">{{ $project->title }}</p>
-                            <p class="text-sm text-gray-500">{{ $project->lead->name }}</p>
+                            <p class="text-lg font-semibold hover:text-indigo-500">{{ $project->title }}</p>
+                            <a href="{{ route('users.show', ['id' => $project->lead->id]) }}" class="text-sm text-gray-500 hover:underline">{{ $project->lead->name }}</a>
                         </div>
                     </div>
                 </a>

@@ -16,6 +16,15 @@ class Post extends Model
     use HasFactory;
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
+    /**
      * Get the author that owns the post.
      */
     public function author()

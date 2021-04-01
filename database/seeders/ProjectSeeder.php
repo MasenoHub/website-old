@@ -17,7 +17,7 @@ class ProjectSeeder extends Seeder
         $projects = [];
         $now = now();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $projects[] = [
                 'title'         => "Project $i",
                 'url'           => "https://github.com/masenohub",

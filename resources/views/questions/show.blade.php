@@ -1,26 +1,22 @@
 <x-app-layout>
     @section('title', $question->title)
     @section('url', route('questions.show', ['question' => $question->id]))
-    {{-- TODO Brief summary here --}}
-    {{-- @section('description', $question->summary) --}}
+    @section('description', "Come and help {$question->author->name} find a solution to his question
+    \"{$question->title}\" on Maseno Hub.")
     @section('author', $question->author->name)
     @section('og:type', 'article')
-
     @section('meta:og')
-        @parent
-        {{-- TODO published_at --}}
-        <meta property="article:published_time" content="{{ $question->created_at->toIso8601String() }}">
-        <meta property="article:modified_time" content="{{ $question->updated_at->toIso8601String() }}">
-        <meta property="article:expiration_time" content="{{ $question->deleted_at?->toIso8601String() }}">
+    @parent
+    <meta property="article:published_time" content="{{ $question->created_at->toIso8601String() }}">
+    <meta property="article:modified_time" content="{{ $question->updated_at->toIso8601String() }}">
+    <meta property="article:expiration_time" content="{{ $question->deleted_at?->toIso8601String() }}">
+    <meta property="article:author" content="{{ route('users.show', ['id' => $question->author->id ]) }}">
+    <meta property="article:section" content="{{ $question->category }}">
 
-        {{-- TODO Profiles --}}
-        {{-- <meta property="article:author" content=""> --}}
-        
-        {{-- TODO Categories, Tags --}}
-        {{-- <meta property="article:section" content="{{ $question->category }}">
-        @foreach ($article->tags as $tag)
+    {{-- TODO Tags --}}
+    {{-- @foreach ($article->tags as $tag)
             <meta property="article:tag" content="{{ $tag->name }}">
-        @endforeach --}}
+    @endforeach --}}
     @endsection
 
     <x-slot name="header">
@@ -29,7 +25,7 @@
                 {{ __('Q&A') }}
             </h2>
             @auth
-            <a href="{{ route('questions.new') }}" class="text-sm px-4 py-2 rounded-lg hover:shadow -my-4">
+            <a href="{{ route('questions.new') }}" class="text-sm px-4 py-2 rounded-lg hover:shadow-inner -my-4">
                 <i class="fas fa-plus mr-2"></i> Ask a Question
             </a>
             @endauth
@@ -41,7 +37,7 @@
             <div class="mb-4">
                 <div class="bg-white rounded-lg shadow p-4">
                     <div class="prose prose-indigo max-w-none my-2">
-                        <h1 class="font-extralight px-4">{{ $question->title }}</h1>
+                        <p class="text-3xl font-semibold px-4">{{ $question->title }}</p>
                         <div id="body" class="py-4">
                             <div class="text-center">
                                 <i class="fas fa-circle-notch fa-spin fa-lg"></i>
@@ -56,7 +52,7 @@
                                 <img src="{{ $question->author->profile_photo_url }}"
                                     alt="{{ $question->author->name }}" class="h-10 rounded-full">
                                 <div class="ml-4">
-                                    <a href="#" class="text-sm hover:underline">{{ $question->author->name }}</a>
+                                    <a href="{{ route('users.show', ['id' => $question->author->id]) }}" class="font-semibold text-sm hover:underline">{{ $question->author->name }}</a>
                                     <p class="text-xs text-gray-500">{{ $question->created_at }}</p>
                                 </div>
                             </div>
@@ -80,7 +76,7 @@
                                 <img src="{{ $answer->author->profile_photo_url }}" alt="{{ $answer->author->name }}"
                                     class="h-10 rounded-full">
                                 <div class="ml-4">
-                                    <a href="#" class="text-sm hover:underline">{{ $answer->author->name }}</a>
+                                    <a href="{{ route('users.show', ['id' => $answer->author->id]) }}" class="font-semibold text-sm hover:underline">{{ $answer->author->name }}</a>
                                     <p class="text-xs text-gray-500">{{ $answer->created_at }}</p>
                                 </div>
                             </div>

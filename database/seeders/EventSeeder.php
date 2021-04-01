@@ -18,7 +18,7 @@ class EventSeeder extends Seeder
         $events = [];
         $now = now();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $start = CarbonImmutable::createFromDate(month: $i);
 
             $events[] = [

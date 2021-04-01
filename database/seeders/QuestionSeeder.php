@@ -19,8 +19,9 @@ class QuestionSeeder extends Seeder
 
         $body = file_get_contents(__DIR__ . '/data/question.json');
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $questions[] = [
+                'category'      => random_int(0, 10) > 5 ? 'programming' : 'tech support',
                 'title'         => "Question $i",
                 'slug'          => "question-$i",
                 'body'          => $body,

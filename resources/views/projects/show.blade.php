@@ -13,7 +13,7 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mb-4">
-                <p class="text-2xl py-4 px-2"><i class="fas fa-info mr-2"></i> Project Details</p>
+                <p class="text-2xl py-4 px-2"><i class="fas fa-info mr-2"></i> Project Overview</p>
                 <div class="bg-white rounded-lg shadow p-4">                    
                     <p>{{ $project->description }}</p>
                 </div>
@@ -25,7 +25,7 @@
                     <img src="{{ $project->lead->profile_photo_url }}" alt="{{ $project->lead->name }}"
                         class="rounded-full">
                     <div>
-                        <p class="text-xl">{{ $project->lead->name }}</p>
+                        <a href="{{ route('users.show', ['id' => $project->lead->id]) }}" class="text-xl hover:text-indigo-500">{{ $project->lead->name }}</p>
                         <p class="text-sm text-gray-500">{{ $project->lead->email }}</p>
                     </div>
                 </div>

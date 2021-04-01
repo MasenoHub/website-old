@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htmlc">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -52,6 +52,8 @@
     <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
 
     @livewireStyles
+
+    @stack('styles')
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>

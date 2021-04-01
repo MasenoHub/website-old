@@ -4,20 +4,16 @@
     @section('description', $post->summary)
     @section('author', $post->author->name)
     @section('og:type', 'article')
-
     @section('meta:og')
     @parent
-    {{-- TODO published_at --}}
-    <meta property="article:published_time" content="{{ $post->created_at->toIso8601String() }}">
+    <meta property="article:published_time" content="{{ $post->published_at->toIso8601String() }}">
     <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
     <meta property="article:expiration_time" content="{{ $post->deleted_at?->toIso8601String() }}">
+    <meta property="article:author" content="{{ route('users.show', ['id' => $post->author->id ]) }}">
+    <meta property="article:section" content="{{ $post->category }}">
 
-    {{-- TODO Profiles --}}
-    {{-- <meta property="article:author" content=""> --}}
-
-    {{-- TODO Categories, Tags --}}
-    {{-- <meta property="article:section" content="{{ $post->category }}">
-    @foreach ($article->tags as $tag)
+    {{-- TODO Tags --}}
+    {{-- @foreach ($article->tags as $tag)
     <meta property="article:tag" content="{{ $tag->name }}">
     @endforeach --}}
     @endsection
@@ -52,11 +48,11 @@
             </div>
         </div>
 
-        <!--Tags -->
-        {{-- <div class="text-base md:text-sm text-gray-500 px-4 py-6">
-            Tags: <a href="#" class="text-base md:text-sm text-indigo-500 no-underline hover:underline">Link</a> . <a
-                href="#" class="text-base md:text-sm text-indigo-500 no-underline hover:underline">Link</a>
-        </div> --}}
+        <!-- TODO Tags -->
+        <div class="text-base md:text-sm text-gray-500 px-4 py-6">
+            <p>Posted in <a href="#" class="text-base md:text-sm text-indigo-500 capitalize no-underline hover:underline">{{ $post->category }}</a></p>
+            {{-- <p>Tags: <a href="#" class="text-base md:text-sm text-indigo-500 no-underline hover:underline">Link</a></p> --}}
+        </div>
 
         <hr class="border-b-2 border-gray-400 my-4 mx-4">
 
@@ -66,7 +62,7 @@
             <img class="w-10 h-10 rounded-full mr-4" src="{{ $post->author->profile_photo_url }}"
                 alt="{{ $post->author->name }}">
             <div class="flex-1 px-2">
-                <p class="text-base font-bold md:text-xl leading-none mb-2">{{ $post->author->name }}</p>
+                <a href="{{ route('users.show', ['id' => $post->author->id]) }}" class="text-base font-bold md:text-xl leading-none mb-2 hover:text-indigo-500">{{ $post->author->name }}</a>
                 <p class="text-gray-600 text-xs md:text-base uppercase">{{ $post->author->role }}</p>
             </div>
             <div class="justify-end">

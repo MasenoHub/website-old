@@ -9,7 +9,7 @@
                 {{ __('Q&A') }}
             </h2>
             @auth
-            <a href="{{ route('questions.new') }}" class="text-sm px-4 py-2 rounded-lg hover:shadow -my-4">
+            <a href="{{ route('questions.new') }}" class="text-sm px-4 py-2 rounded-lg hover:shadow-inner -my-4">
                 <i class="fas fa-plus mr-2"></i> Ask a Question
             </a>
             @endauth
@@ -30,8 +30,9 @@
                     </div>
                 </div>
                 <div class="w-full flex text-right">
-                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by <span
-                            class="text-gray-900">{{ $question->author->name }}</span></p>
+                    <p class="ml-auto text-xs text-gray-500 w-full">Asked on {{ $question->created_at }} by
+                        <a href="{{ route('users.show', ['id' => $question->author->id]) }}" class="font-semibold text-gray-900 hover:underline">{{ $question->author->name }}</a>
+                    </p>
                 </div>
             </div>
             @endforeach
