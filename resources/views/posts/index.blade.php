@@ -11,9 +11,7 @@
 
     <section class="bg-white text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
-            <div class="<span class="text-sm mb-4">Last updated
-            <span class="timeago" datetime="{{ $post->updated_at->toDateTimeString() }}"></span>
-        </span>">
+            <div class="grid grid-cols-2 md:grid-cols-2 -m-12 gap-4">
                 @foreach ($posts as $post)
                 <x-posts.post-item :post="$post" author/>
                 @endforeach

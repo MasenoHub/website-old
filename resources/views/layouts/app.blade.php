@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htmlc">
+<html>
 
 <head>
     <meta charset="utf-8">

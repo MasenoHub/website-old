@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index()
     {
         return view('posts.index', [
-            'posts' => Post::with(['author'])->orderBy('id', 'desc')->get()
+            'posts' => Post::with(['author'])->whereNotNull(['published_at'])->orderBy('id', 'desc')->get()
         ]);
     }
 

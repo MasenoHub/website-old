@@ -1,8 +1,8 @@
 @props(['post', 'author' => false])
 
 <div class="p-12 flex flex-col items-start rounded-lg hover:shadow">
-    <span class="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest">
-        Category
+    <span class="inline-block py-1 px-2 rounded bg-indigo-50 text-indigo-500 text-xs font-medium tracking-widest capitalize">
+        {{ $post->category }}
     </span>
     <h2 class="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
         {{ $post->title }}
@@ -10,12 +10,12 @@
     <p class="leading-relaxed mb-8">{{ $post->summary }}</p>
 
     <div class="text-sm mb-4">
-        <p class="mb-2">Published on {{ $post->created_at }}</p>
+        <p class="mb-2">Published on {{ $post->published_at }}</p>
         <p class="mb-2">Last updated
             <span class="timeago" datetime="{{ $post->updated_at->toDateTimeString() }}"></span>
         </p>
     </div>
-    <div class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
+    <div class="flex items-center flex-wrap pb-4 border-b-2 border-gray-100 mt-auto w-full">
         <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="text-indigo-500 inline-flex items-center">
             Read More
             <i class="fas fa-arrow-right ml-2"></i>
@@ -30,7 +30,7 @@
     </div>
 
     @if ($author)
-    <a class="inline-flex items-center">
+    <a class="inline-flex items-center mt-4">
         <img alt="{{ $post->author->name }}" src="{{ $post->author->profile_photo_url }}"
             class="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center">
         <span class="flex-grow flex flex-col pl-4">
